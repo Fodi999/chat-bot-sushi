@@ -4,9 +4,16 @@ import { useState } from "react";
 
 const Card = ({ dish, onBuy }) => {
   const [isHidden, setIsHidden] = useState(false);
+  const [likes, setLikes] = useState(0); // Состояние для лайков
+  const [isLiked, setIsLiked] = useState(false); // Состояние для цвета лайков
 
   const handleImageClick = () => {
     setIsHidden(!isHidden);
+  };
+
+  const handleLike = () => {
+    setLikes((prevLikes) => (isLiked ? prevLikes - 1 : prevLikes + 1)); // Увеличение или уменьшение лайков
+    setIsLiked(!isLiked); // Переключение состояния лайка
   };
 
   return (
@@ -23,6 +30,25 @@ const Card = ({ dish, onBuy }) => {
             <h3 className="text-lg font-bold">{dish.name}</h3>
             <p className="text-sm text-gray-300">{dish.description}</p>
             <p className="text-md font-semibold mt-2">{dish.price}</p>
+          </div>
+          <div className="absolute top-4 right-4 flex items-center space-x-2">
+            <button
+              onClick={handleLike}
+              className="flex items-center space-x-1 focus:outline-none"
+            >
+              <i
+                className={`bx bx-heart text-xl cursor-pointer ${
+                  isLiked ? "text-red-500" : "text-white"
+                }`}
+              ></i>
+              <span
+                className={`text-sm font-semibold ${
+                  isLiked ? "text-red-500" : "text-white"
+                }`}
+              >
+                {likes}
+              </span>
+            </button>
           </div>
           <button
             onClick={() => onBuy(dish)}
