@@ -17,7 +17,7 @@ export default defineConfig({
         display: "standalone",
         icons: [
           {
-            src: "public/android-chrome-192x192.png",
+            src: "/android-chrome-192x192.png",
             sizes: "192x192",
             type: "image/png",
           },

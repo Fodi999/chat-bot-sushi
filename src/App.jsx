@@ -1,36 +1,21 @@
 import { useState } from "react";
 import Sidebar from "./Sidebar";
 import AboutSidebar from "./AboutSidebar";
+import { useChatLogic } from "./components/ChatLogic";
 import "./App.css";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const {
+    messages,
+    input,
+    handleSendMessage,
+    handleInputChange,
+  } = useChatLogic();
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const toggleAbout = () => setIsAboutOpen(!isAboutOpen);
-
-  const [messages, setMessages] = useState([
-    { sender: "bot", text: "Привет! Я ваш помощник Master Sushi Dima Fomin. Чем могу помочь?" },
-  ]);
-  const [input, setInput] = useState("");
-
-  const handleSendMessage = () => {
-    if (input.trim()) {
-      setMessages([...messages, { sender: "user", text: input }]);
-      setMessages((prev) => [
-        ...prev,
-        { sender: "bot", text: "Ваш запрос обрабатывается..." },
-      ]);
-      setInput("");
-    }
-  };
-
-  const handleInputChange = (e) => {
-    setInput(e.target.value);
-    e.target.style.height = "auto";
-    e.target.style.height = `${e.target.scrollHeight}px`;
-  };
 
   return (
     <div className="flex flex-col h-screen bg-[#282828] text-white py-4">
@@ -81,14 +66,12 @@ function App() {
       <footer className="bg-[#282828] p-4 pb-safe-bottom">
         <div className="flex items-center space-x-2 max-w-lg mx-auto w-full">
           <div className="relative flex items-start w-full bg-[#383838] border border-[#4a4a4a] rounded-lg p-2">
-          <button
-  className="absolute inset-y-0 left-2 flex items-center text-red-500 text-2xl min-h-[44px] min-w-[44px]"
-  onClick={toggleSidebar}
->
-  <i className="bx bx-food-menu"></i>
-</button>
-
-
+            <button
+              className="absolute inset-y-0 left-2 flex items-center text-red-500 text-2xl min-h-[44px] min-w-[44px]"
+              onClick={toggleSidebar}
+            >
+              <i className="bx bx-food-menu"></i>
+            </button>
             <textarea
               value={input}
               onChange={handleInputChange}
@@ -96,7 +79,6 @@ function App() {
               rows="1"
               className="flex-1 resize-none bg-transparent text-white text-sm px-12 py-1 focus:outline-none"
             ></textarea>
-
             <button
               onClick={handleSendMessage}
               className="absolute inset-y-0 right-2 flex items-center text-white text-2xl min-h-[44px] min-w-[44px]"
@@ -114,6 +96,7 @@ function App() {
 }
 
 export default App;
+
 
 
 

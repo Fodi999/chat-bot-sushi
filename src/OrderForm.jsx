@@ -25,11 +25,11 @@ const OrderForm = ({ isOpen, toggleForm, onSubmit, items, totalPrice }) => {
       style={{ width: "100%", maxWidth: "450px" }}
     >
       <div
-        className="flex flex-col h-full pt-[12px] pb-[12px] px-4 overflow-y-scroll
-            [&::-webkit-scrollbar]:w-2
-            [&::-webkit-scrollbar-track]:bg-gray-800
-            [&::-webkit-scrollbar-thumb]:bg-gray-600
-            [&::-webkit-scrollbar-thumb]:rounded"
+        className="flex flex-col h-full pt-safe-top pb-safe-bottom px-4 overflow-y-scroll
+          [&::-webkit-scrollbar]:w-2
+          [&::-webkit-scrollbar-track]:bg-gray-800
+          [&::-webkit-scrollbar-thumb]:bg-gray-600
+          [&::-webkit-scrollbar-thumb]:rounded"
       >
         <div className="flex justify-end mb-6">
           <button
@@ -134,4 +134,5 @@ OrderForm.propTypes = {
 };
 
 export default OrderForm;
+
 

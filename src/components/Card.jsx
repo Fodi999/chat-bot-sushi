@@ -1,14 +1,17 @@
-// src/components/Card.jsx
 import PropTypes from "prop-types";
 import { useState } from "react";
 
 const Card = ({ dish, onBuy }) => {
-  const [isHidden, setIsHidden] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false); // Состояние для увеличенного изображения
   const [likes, setLikes] = useState(0); // Состояние для лайков
   const [isLiked, setIsLiked] = useState(false); // Состояние для цвета лайков
 
   const handleImageClick = () => {
-    setIsHidden(!isHidden);
+    setIsZoomed(true);
+  };
+
+  const handleCloseZoom = () => {
+    setIsZoomed(false);
   };
 
   const handleLike = () => {
@@ -24,39 +27,54 @@ const Card = ({ dish, onBuy }) => {
         className="w-full h-48 object-cover cursor-pointer"
         onClick={handleImageClick}
       />
-      {!isHidden && (
-        <>
-          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-4">
-            <h3 className="text-lg font-bold">{dish.name}</h3>
-            <p className="text-sm text-gray-300">{dish.description}</p>
-            <p className="text-md font-semibold mt-2">{dish.price}</p>
-          </div>
-          <div className="absolute top-4 right-4 flex items-center space-x-2">
-            <button
-              onClick={handleLike}
-              className="flex items-center space-x-1 focus:outline-none"
+      <>
+        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white p-4">
+          <h3 className="text-lg font-bold">{dish.name}</h3>
+          <p className="text-sm text-gray-300">{dish.description}</p>
+          <p className="text-md font-semibold mt-2">{dish.price}</p>
+        </div>
+        <div className="absolute top-4 right-4 flex items-center space-x-2">
+          <button
+            onClick={handleLike}
+            className="flex items-center space-x-1 focus:outline-none"
+          >
+            <i
+              className={`bx bxs-heart text-xl cursor-pointer ${
+                isLiked ? "text-red-500" : "text-gray-400"
+              }`}
+            ></i>
+            <span
+              className={`text-sm font-semibold ${
+                isLiked ? "text-red-500" : "text-gray-400"
+              }`}
             >
-              <i
-                className={`bx bx-heart text-xl cursor-pointer ${
-                  isLiked ? "text-red-500" : "text-white"
-                }`}
-              ></i>
-              <span
-                className={`text-sm font-semibold ${
-                  isLiked ? "text-red-500" : "text-white"
-                }`}
-              >
-                {likes}
-              </span>
+              {likes}
+            </span>
+          </button>
+        </div>
+        <button
+          onClick={() => onBuy(dish)}
+          className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded-md text-sm"
+        >
+          Купить
+        </button>
+      </>
+      {isZoomed && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 flex justify-center items-center z-50">
+          <div className="relative">
+            <img
+              src={dish.image}
+              alt={dish.name}
+              className="w-[350px] h-[250px] object-cover"
+            />
+            <button
+              onClick={handleCloseZoom}
+              className="absolute top-2 right-2 bg-gray-700 text-white rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-gray-600"
+            >
+              &#10005;
             </button>
           </div>
-          <button
-            onClick={() => onBuy(dish)}
-            className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded-md text-sm"
-          >
-            Купить
-          </button>
-        </>
+        </div>
       )}
     </div>
   );
@@ -68,4 +86,6 @@ Card.propTypes = {
 };
 
 export default Card;
+
+
 
