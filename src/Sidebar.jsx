@@ -44,7 +44,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         style={{ width: "100%" }}
       >
         <div
-          className="flex flex-col h-full p-4 overflow-y-scroll
+          className="flex flex-col h-full pt-safe-top pb-safe-bottom p-4 overflow-y-scroll
             [&::-webkit-scrollbar]:w-2
             [&::-webkit-scrollbar-track]:bg-gray-800
             [&::-webkit-scrollbar-thumb]:bg-gray-600
@@ -114,6 +114,7 @@ Sidebar.propTypes = {
 };
 
 export default Sidebar;
+
 
 
 

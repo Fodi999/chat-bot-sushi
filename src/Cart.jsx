@@ -44,7 +44,13 @@ const Cart = ({ isOpen, toggleCart, items, removeItem }) => {
       } bg-[#1e1e1e] transition-transform duration-300 ease-in-out`}
       style={{ width: "100%", maxWidth: "450px" }}
     >
-      <div className="flex flex-col h-full p-4 overflow-y-auto">
+      <div
+        className="flex flex-col h-full pt-safe-top pb-safe-bottom p-4 overflow-y-scroll
+            [&::-webkit-scrollbar]:w-2
+            [&::-webkit-scrollbar-track]:bg-gray-800
+            [&::-webkit-scrollbar-thumb]:bg-gray-600
+            [&::-webkit-scrollbar-thumb]:rounded"
+      >
         {/* Кнопка закрытия корзины */}
         <div className="flex justify-end mb-6">
           <button
@@ -119,3 +125,4 @@ Cart.propTypes = {
 };
 
 export default Cart;
+
