@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import OrderForm from "./OrderForm"; // Импорт формы заказа
+import CartItem from "./components/CartItem"; // Импорт нового компонента
 
 const Cart = ({ isOpen, toggleCart, items, removeItem }) => {
   const [quantities, setQuantities] = useState({});
@@ -74,13 +75,7 @@ const Cart = ({ isOpen, toggleCart, items, removeItem }) => {
           totalPrice={totalPrice}
         />
       ) : (
-        <div
-          className="flex flex-col h-full p-4 overflow-y-scroll"
-          style={{
-            paddingTop: '20px',
-            paddingBottom: '20px',
-          }}
-        >
+        <div className="flex flex-col h-full pt-safe-top pb-safe-bottom p-4 sm:pt-12 sm:pb-12 overflow-y-scroll">
           <div className="flex justify-end mb-6">
             <button
               className="text-white text-2xl hover:text-gray-400 transition-colors"
@@ -96,52 +91,14 @@ const Cart = ({ isOpen, toggleCart, items, removeItem }) => {
               <p className="text-gray-400">Корзина пуста.</p>
             ) : (
               items.map((item) => (
-                <div
+                <CartItem
                   key={item.id}
-                  className="flex items-center bg-[#2e2e2e] p-4 rounded-lg mb-4"
-                >
-                  {/* Фото товара */}
-                  <div className="w-16 h-16 rounded-lg overflow-hidden mr-4">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-
-                  {/* Информация о товаре */}
-                  <div className="flex-1">
-                    <h3 className="text-white">{item.name}</h3>
-                    <p className="text-gray-400">{item.price}</p>
-                  </div>
-
-                  {/* Счётчик */}
-                  <div className="flex items-center space-x-2">
-                    <button
-                      className="text-white bg-gray-600 hover:bg-gray-500 px-2 py-1 rounded"
-                      onClick={() => decreaseQuantity(item.id)}
-                    >
-                      <i className="bx bx-minus"></i>
-                    </button>
-                    <span className="text-white font-bold">
-                      {quantities[item.id] || 1}
-                    </span>
-                    <button
-                      className="text-white bg-gray-600 hover:bg-gray-500 px-2 py-1 rounded"
-                      onClick={() => increaseQuantity(item.id)}
-                    >
-                      <i className="bx bx-plus"></i>
-                    </button>
-                  </div>
-
-                  {/* Кнопка удаления */}
-                  <button
-                    className="text-red-500 hover:text-red-700 ml-4"
-                    onClick={() => removeItem(item.id)}
-                  >
-                    <i className="bx bx-trash"></i>
-                  </button>
-                </div>
+                  item={item}
+                  quantity={quantities[item.id] || 1}
+                  increaseQuantity={increaseQuantity}
+                  decreaseQuantity={decreaseQuantity}
+                  removeItem={removeItem}
+                />
               ))
             )}
           </div>
@@ -177,6 +134,8 @@ Cart.propTypes = {
 };
 
 export default Cart;
+
+
 
 
 
