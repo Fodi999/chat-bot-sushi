@@ -18,6 +18,7 @@ const AboutSidebar = ({ isOpen, toggleAbout }) => {
     >
       <div
         className="flex flex-col h-full p-4 overflow-y-scroll
+            pt-safe-top pb-safe-bottom
             [&::-webkit-scrollbar]:w-2
             [&::-webkit-scrollbar-track]:bg-gray-800
             [&::-webkit-scrollbar-thumb]:bg-gray-600
@@ -93,6 +94,7 @@ AboutSidebar.propTypes = {
 };
 
 export default AboutSidebar;
+
 
 
 
