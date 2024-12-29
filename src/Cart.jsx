@@ -75,15 +75,15 @@ const Cart = ({ isOpen, toggleCart, items, removeItem }) => {
           totalPrice={totalPrice}
         />
       ) : (
-        <div className="flex flex-col h-full pt-safe-top pb-safe-bottom p-4 sm:pt-12 sm:pb-12 overflow-y-scroll">
-          <div className="flex justify-end mb-6">
-            <button
-              className="text-white text-2xl hover:text-gray-400 transition-colors"
-              onClick={toggleCart}
-            >
-              <i className="bx bx-x"></i>
-            </button>
-          </div>
+        <div className="flex flex-col h-full pt-safe-top pb-safe-bottom p-6 sm:pt-16 sm:pb-16 lg:pt-20 lg:pb-20 overflow-y-scroll">
+        <div className="flex justify-end mb-8">
+          <button
+            className="text-white text-3xl hover:text-gray-400 transition-colors"
+            onClick={toggleCart}
+          >
+            <i className="bx bx-x"></i>
+          </button>
+        </div>
 
           <div>
             <h2 className="text-lg font-bold text-white mb-4">Корзина</h2>
