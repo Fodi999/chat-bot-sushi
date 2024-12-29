@@ -59,9 +59,7 @@ const Cart = ({ isOpen, toggleCart, items, removeItem }) => {
 
   return (
     <div
-      className={`fixed top-0 right-0 h-full ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      } bg-[#1e1e1e] transition-transform duration-300 ease-in-out`}
+      className={`fixed top-0 right-0 h-full ${isOpen ? "translate-x-0" : "translate-x-full"} bg-[#1e1e1e] transition-transform duration-300 ease-in-out`}
       style={{ width: "100%", maxWidth: "450px" }}
     >
       {isOrderFormOpen ? (
@@ -77,11 +75,11 @@ const Cart = ({ isOpen, toggleCart, items, removeItem }) => {
         />
       ) : (
         <div
-          className="flex flex-col h-full pt-[12px] pb-[12px] px-4 overflow-y-scroll
-              [&::-webkit-scrollbar]:w-2
-              [&::-webkit-scrollbar-track]:bg-gray-800
-              [&::-webkit-scrollbar-thumb]:bg-gray-600
-              [&::-webkit-scrollbar-thumb]:rounded"
+          className="flex flex-col h-full p-4 overflow-y-scroll"
+          style={{
+            paddingTop: '4px',
+            paddingBottom: '4px',
+          }}
         >
           <div className="flex justify-end mb-6">
             <button
@@ -179,6 +177,8 @@ Cart.propTypes = {
 };
 
 export default Cart;
+
+
 
 
 
