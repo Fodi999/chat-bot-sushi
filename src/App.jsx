@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="flex flex-col h-screen bg-[#282828] text-white">
       {/* Заголовок */}
-      <header className="bg-[#1e1e1e] text-white py-4 px-6">
+      <header className="bg-[#1e1e1e] text-white py-4 px-6 pt-safe-top">
         <button
           onClick={toggleAbout} // Открываем меню "Об авторе"
           className="flex items-center space-x-4 bg-[#282828] text-white hover:shadow-lg rounded-lg p-2 transition-all duration-200"
@@ -84,7 +84,7 @@ function App() {
       </main>
 
       {/* Поле ввода */}
-      <footer className="bg-[#1e1e1e] p-4">
+      <footer className="bg-[#1e1e1e] p-4 pb-safe-bottom">
         <div className="flex items-center space-x-2 max-w-lg mx-auto w-full">
           <div className="relative flex items-start w-full bg-[#383838] border border-[#4a4a4a] rounded-lg p-2">
             {/* Иконка меню */}
@@ -125,3 +125,4 @@ function App() {
 }
 
 export default App;
+
