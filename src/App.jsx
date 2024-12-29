@@ -1,16 +1,17 @@
 import { useState } from "react";
 import Sidebar from "./Sidebar"; // Импортируем Sidebar
+import AboutSidebar from "./AboutSidebar"; // Импортируем AboutSidebar
 import "./App.css";
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false); // Состояние для меню "Об авторе"
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+  const toggleAbout = () => setIsAboutOpen(!isAboutOpen);
 
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Привет! Я ваш помощник Chat Bot Sushi. Чем могу помочь?" },
+    { sender: "bot", text: "Привет! Я ваш помощник Master Sushi Dima Fomin. Чем могу помочь?" },
   ]);
   const [input, setInput] = useState("");
 
@@ -34,8 +35,20 @@ function App() {
   return (
     <div className="flex flex-col h-screen bg-[#282828] text-white">
       {/* Заголовок */}
-      <header className="bg-[#1e1e1e] text-white text-center py-4">
-        <h1 className="text-xl font-bold">Chat Bot Sushi</h1>
+      <header className="bg-[#1e1e1e] text-white py-4 px-6">
+        <button
+          onClick={toggleAbout} // Открываем меню "Об авторе"
+          className="flex items-center space-x-4 bg-[#282828] text-white hover:shadow-lg rounded-lg p-2 transition-all duration-200"
+        >
+          <div className="w-12 h-12 rounded-full border border-gray-400 overflow-hidden">
+            <img
+              src="/feis 1.png"
+              alt="Author Avatar"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <span className="text-xl font-bold">Master Sushi</span>
+        </button>
       </header>
 
       {/* Область чата */}
@@ -104,15 +117,11 @@ function App() {
 
       {/* Sidebar */}
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+
+      {/* AboutSidebar */}
+      <AboutSidebar isOpen={isAboutOpen} toggleAbout={toggleAbout} />
     </div>
   );
 }
 
 export default App;
-
-
-
-
-
-
-

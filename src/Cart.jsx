@@ -119,7 +119,3 @@ Cart.propTypes = {
 };
 
 export default Cart;
-
-
-
-
