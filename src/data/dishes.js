@@ -2,9 +2,9 @@ const categories = [
     {
       title: "Нигири",
       dishes: [
-        { id: 1, name: "Суши с лососем", description: "Свежий лосось, рис, нори", price: "12.99₽", image: "https://via.placeholder.com/150/FFB6C1" },
-        { id: 2, name: "Суши с тунцом", description: "Свежий тунец, рис, нори", price: "13.99₽", image: "https://via.placeholder.com/150/FFA500" },
-        { id: 3, name: "Суши с креветкой", description: "Креветка, рис, нори", price: "14.99₽", image: "https://via.placeholder.com/150/FFD700" },
+        { id: 1, name: "Суши с лососем", description: "Свежий лосось, рис, нори", price: "12.99₽", image: "/00032.jpg" },
+        { id: 2, name: "Суши с тунцом", description: "Свежий тунец, рис, нори", price: "13.99₽", image: "/00033.jpg" },
+        { id: 3, name: "Суши с креветкой", description: "Креветка, рис, нори", price: "14.99₽", image: "/00032.jpg" },
         { id: 4, name: "Суши с угрём", description: "Угорь, рис, нори", price: "15.99₽", image: "https://via.placeholder.com/150/800080" },
         { id: 5, name: "Суши с икрой", description: "Икра лосося, рис, нори", price: "16.99₽", image: "https://via.placeholder.com/150/FF4500" },
         { id: 6, name: "Суши с крабом", description: "Мясо краба, рис, нори", price: "17.99₽", image: "/00128.jpg" },

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import aboutData from "./data/aboutData"; // Импортируем данные
+import aboutData from "./data/aboutData";
 
 const AboutSidebar = ({ isOpen, toggleAbout }) => {
   const [activeAccordion, setActiveAccordion] = useState(null);
@@ -27,7 +27,7 @@ const AboutSidebar = ({ isOpen, toggleAbout }) => {
         {/* Кнопка закрытия */}
         <div className="flex justify-end mb-6">
           <button
-            className="text-white text-2xl hover:text-gray-400 transition-colors"
+            className="text-white text-2xl hover:text-gray-400 transition-colors mt-[4px]"
             onClick={toggleAbout}
           >
             <i className="bx bx-arrow-back"></i>
@@ -94,6 +94,7 @@ AboutSidebar.propTypes = {
 };
 
 export default AboutSidebar;
+
 
 
 
