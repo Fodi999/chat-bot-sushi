@@ -77,8 +77,8 @@ const Cart = ({ isOpen, toggleCart, items, removeItem }) => {
         <div
           className="flex flex-col h-full p-4 overflow-y-scroll"
           style={{
-            paddingTop: '4px',
-            paddingBottom: '4px',
+            paddingTop: '20px',
+            paddingBottom: '20px',
           }}
         >
           <div className="flex justify-end mb-6">
