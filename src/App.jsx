@@ -38,7 +38,7 @@ function App() {
       <header className="bg-[#1e1e1e] text-white py-4 px-6 pt-safe-top">
         <button
           onClick={toggleAbout} // Открываем меню "Об авторе"
-          className="flex items-center space-x-4 bg-[#282828] text-white hover:shadow-lg rounded-lg p-2 transition-all duration-200"
+          className="flex items-center space-x-4 bg-[#282828] text-white hover:shadow-lg rounded-lg p-2 transition-all duration-200 min-h-[44px] min-w-[44px]"
         >
           <div className="w-12 h-12 rounded-full border border-gray-400 overflow-hidden">
             <img
@@ -89,7 +89,7 @@ function App() {
           <div className="relative flex items-start w-full bg-[#383838] border border-[#4a4a4a] rounded-lg p-2">
             {/* Иконка меню */}
             <button
-              className="absolute bottom-2 left-2 text-white text-xl"
+              className="absolute bottom-2 left-2 text-white text-xl min-h-[44px] min-w-[44px]"
               onClick={toggleSidebar}
             >
               <i className="bx bx-food-menu"></i>
@@ -107,7 +107,7 @@ function App() {
             {/* Кнопка отправки */}
             <button
               onClick={handleSendMessage}
-              className="absolute bottom-2 right-2 text-white text-xl"
+              className="absolute bottom-2 right-2 text-white text-xl min-h-[44px] min-w-[44px]"
             >
               <i className="bx bx-down-arrow-circle"></i>
             </button>
@@ -125,4 +125,5 @@ function App() {
 }
 
 export default App;
+
 
